@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Hotel Management <b>System</b></div>
+        <ul class="nav-links">
+            <li><a href="#" id="default-page">Report</a></li>
+            <li><a href="#room_management">Room Management</a></li>
+            <li><a href="#booking_management">Booking</a></li>
+            <li><a href="#payement">Payment</a></li>
+            <li><a href="#logout">Log Out</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="gradient-background">
+        <div class="gradient-content">
+            <p class="username">Username</p>
+            <h1>Hotel Occupancy Report</h1>
+        </div>
+    </section>
+
+    <section class="report-data">
+        <div class="report-content">
+            <p class="table-head">Recent Bookings</p>
+            <ul>
+                <li id="rate"></li>
+                <li id="revenue"></li>
+            </ul>
+            <table id="booking-table" class="table-content">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Room No.</th>
+                        <th>Name</th>
+                        <th>No. of Occupants</th>
+                        <th>Mode of Travel</th>
+                        <th>Smoking/ Non-Smoking</th>
+                        <th>Payment Status</th>
+                        <th>Mode of Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
