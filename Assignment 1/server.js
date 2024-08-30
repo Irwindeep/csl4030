@@ -7,7 +7,7 @@ require('dotenv').config();
 // Create a connection to the MySQL database
 const db = mysql.createConnection({
   host: 'localhost',
-  user: process.env.USER,
+  user: "root",
   password: process.env.PASSWORD,
   database: 'hotel_management'
 });
