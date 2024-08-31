@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Artist</title>
+</head>
+<body>
+    <h1>Register as an Artist</h1>
+    <form action="{{ url_for('register_artist') }}" method="post" enctype="multipart/form-data">
+        <input type="text" name="username" placeholder="Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <textarea name="biography" placeholder="Biography" required></textarea><br>
+        <input type="file" name="profile_image" accept="image/*" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already registered? <a href="{{ url_for('login') }}">Login here</a>.</p>
+</body>
+</html>

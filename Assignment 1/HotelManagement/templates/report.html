@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='report.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Hotel Management <b>System</b></div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('report') }}" id="default-page">Report</a></li>
+            <li><a href="{{ url_for('room_management') }}">Room Management</a></li>
+            <li><a href="{{ url_for('booking') }}">Booking</a></li>
+            <li><a href="{{ url_for('payment') }}">Payment</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="gradient-background">
+        <div class="gradient-content">
+            <p class="username">{{ username }}</p>
+            <h1>Hotel Occupancy Report</h1>
+        </div>
+    </section>
+
+    <section class="report-data">
+        <div class="report-content">
+            <p class="table-head">Recent Bookings</p>
+            <ul>
+                <li id="rate">{{ 'Occupancy Rate: ' + reports[1] + '%' }}</li>
+                <li id="revenue">{{ 'Net Revenue: Rs. ' + reports[0] + '/-' }}</li>
+            </ul>
+            <table id="booking-table" class="table-content">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Room No.</th>
+                        <th>Name</th>
+                        <th>Phone No.</th>
+                        <th>Email ID</th>
+                        <th>Booking Date</th>
+                        <th>No. of Occupants</th>
+                        <th>Mode of Travel</th>
+                        <th>Payment Status</th>
+                        <th>Mode of Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Data will be inserted here -->
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking[0] }}</td>
+                        <td>{{ booking[1] }}</td>
+                        <td>{{ booking[4] + " " + booking[5] }}</td>
+                        <td>{{ booking[2] }}</td>
+                        <td>{{ booking[3] }}</td>
+                        <td>{{ booking[6] }}</td>
+                        <td>{{ booking[7] }}</td>
+                        <td>{{ booking[8] }}</td>
+                        <td>{{ 'Paid' if booking[10] == 1 else 'Not Paid' }}</td>
+                        <td>{{ booking[9] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>

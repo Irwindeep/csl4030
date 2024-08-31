@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='room_management.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Hotel Management <b>System</b></div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('report') }}" id="default-page">Report</a></li>
+            <li><a href="{{ url_for('room_management') }}">Room Management</a></li>
+            <li><a href="{{ url_for('booking') }}">Booking</a></li>
+            <li><a href="{{ url_for('payment') }}">Payment</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="gradient-background">
+        <div class="gradient-content">
+            <p class="username">{{ username }}</p>
+            <h1>Room Management <b>System</b></h1>
+        </div>
+    </section>
+
+    <section class="room-search">
+        <div class="search-content">
+            <form method="POST" action="{{ url_for('room_management') }}">
+                <label for="room_number">Enter Room Number:</label>
+                <input type="text" id="room_number" name="room_number" required>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+
+    {% if room_info %}
+    <section class="room-info">
+        <h2 class="table-head">Room Information</h2>
+        <table class="table-content">
+            <thead>
+                <tr>
+                    <th>Detail</th>
+                    <th>Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Room Number:</td>
+                    <td>{{ room_info[0] }}</td>
+                </tr>
+                <tr>
+                    <td>Type:</td>
+                    <td>{{ room_info[1] }}</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>{{ room_info[2] }}</td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td>{{ room_info[3] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    {% if booking_info %}
+    <section class="booking-info">
+        <h2 class="table-head">Booking Information</h2>
+        <table class="table-content">
+            <tbody>
+                <tr>
+                    <td>Booking ID:</td>
+                    <td>{{ booking_info[0] }}</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{ booking_info[4] + " " + booking_info[5] }}</td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td>{{ booking_info[2] }}</td>
+                </tr>
+                <tr>
+                    <td>Email ID:</td>
+                    <td>{{ booking_info[3] }}</td>
+                </tr>
+                <tr>
+                    <td>Booking Date:</td>
+                    <td>{{ booking_info[6] }}</td>
+                </tr>
+                <tr>
+                    <td>No. of Occupants:</td>
+                    <td>{{ booking_info[7] }}</td>
+                </tr>
+                <tr>
+                    <td>Mode of Travel:</td>
+                    <td>{{ booking_info[8] }}</td>
+                </tr>
+                <tr>
+                    <td>Payment Status:</td>
+                    <td>{{ 'Paid' if booking_info[10] == 1 else 'Unpaid' }}</td>
+                </tr>
+                <tr>
+                    <td>Mode of Payment:</td>
+                    <td>{{ booking_info[9] }}</td>
+                </tr>
+                <!-- Add more booking details as needed -->
+            </tbody>
+        </table>
+    </section>
+    {% endif %}
+
+    {% elif error %}
+    <section class="error-message">
+        <div class="error-content">
+            <p>{{ error }}</p>
+        </div>
+    </section>
+    {% endif %}
+</body>
+</html>
