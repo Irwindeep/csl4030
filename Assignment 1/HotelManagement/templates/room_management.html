@@ -12,8 +12,6 @@
         <ul class="nav-links">
             <li><a href="{{ url_for('report') }}" id="default-page">Report</a></li>
             <li><a href="{{ url_for('room_management') }}">Room Management</a></li>
-            <li><a href="{{ url_for('booking') }}">Booking</a></li>
-            <li><a href="{{ url_for('payment') }}">Payment</a></li>
             <li><a href="{{ url_for('logout') }}">Log Out</a></li>
         </ul>
         <div class="menu-toggle">
@@ -81,36 +79,32 @@
                     <td>{{ booking_info[0] }}</td>
                 </tr>
                 <tr>
-                    <td>Name:</td>
-                    <td>{{ booking_info[4] + " " + booking_info[5] }}</td>
-                </tr>
-                <tr>
-                    <td>Phone Number:</td>
+                    <td>Guest ID:</td>
                     <td>{{ booking_info[2] }}</td>
                 </tr>
                 <tr>
-                    <td>Email ID:</td>
+                    <td>Booking Time:</td>
                     <td>{{ booking_info[3] }}</td>
                 </tr>
                 <tr>
-                    <td>Booking Date:</td>
-                    <td>{{ booking_info[6] }}</td>
-                </tr>
-                <tr>
                     <td>No. of Occupants:</td>
-                    <td>{{ booking_info[7] }}</td>
+                    <td>{{ booking_info[4] }}</td>
                 </tr>
                 <tr>
                     <td>Mode of Travel:</td>
+                    <td>{{ booking_info[5] }}</td>
+                </tr>
+                <tr>
+                    <td>Check IN:</td>
+                    <td>{{ booking_info[6] }}</td>
+                </tr>
+                <tr>
+                    <td>Check OUT:</td>
+                    <td>{{ booking_info[7] }}</td>
+                </tr>
+                <tr>
+                    <td>Payment ID:</td>
                     <td>{{ booking_info[8] }}</td>
-                </tr>
-                <tr>
-                    <td>Payment Status:</td>
-                    <td>{{ 'Paid' if booking_info[10] == 1 else 'Unpaid' }}</td>
-                </tr>
-                <tr>
-                    <td>Mode of Payment:</td>
-                    <td>{{ booking_info[9] }}</td>
                 </tr>
                 <!-- Add more booking details as needed -->
             </tbody>
